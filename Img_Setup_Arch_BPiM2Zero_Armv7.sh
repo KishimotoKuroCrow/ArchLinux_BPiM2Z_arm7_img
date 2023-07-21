@@ -13,6 +13,7 @@ ARCHARMIMG=ArchLinuxARM-armv7-latest
 IMGFILE=alarm_sd.img
 
 # Make an empty 4GB image, set the loop device for the image
+# (3.5GB would be more than enough for the image)
 dd if=/dev/zero of=${CURRENTDIR}/${IMGFILE} bs=1M count=4096 status=progress
 losetup -fP ${CURRENTDIR}/${IMGFILE}
 DISK=$(losetup --list | grep ${IMGFILE} | awk '{print $1}' | sed 's/\/dev\///')

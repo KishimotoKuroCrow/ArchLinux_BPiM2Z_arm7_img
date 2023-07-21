@@ -58,7 +58,8 @@ WIFI_PWD=MyWifiPassword # Plain text Wifi password
 <a name="installation"></a>
 ## Installation
 Run the following script. It'll generate a 4GB empty file, set it up as a loop device, and mount it
-as a disk for partition and installation. Everything is detected automatically.
+as a disk for partition and installation. Everything is detected automatically. 3.5GB would have been
+enough.
 ```
 $ sudo ./Img_Setup_ArchBPiM2Zero_Arm7.sh
 ```
