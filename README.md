@@ -109,6 +109,10 @@ Upon first boot, the system will resize the root partition to fill the rest of t
 * Called by **_Machine\_Setup\_Arch.sh_**
 * Setup additional user preferences.
 
+###### MountImg.sh
+* Mount generated image to ./ThisImgRoot for inspection, take img as argument
+* ./MountImg.sh alarm_sd.img
+
 <a name="problems"></a>
 ## Encountered Problems
 1) No HDMI display no matter what image I burn:
