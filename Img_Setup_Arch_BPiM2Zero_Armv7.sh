@@ -125,7 +125,6 @@ fi
 # Unmount the partitions and disconnect the image to loop device
 umount $MOUNTBOOT
 umount $MOUNTROOT
-losetup -d /dev/${DISK}
 
 # Generate the BIN file, copy it, and burn it.
 BINFILE=u-boot-sunxi-with-spl.bin
@@ -142,3 +141,4 @@ fi
 sync
 dd if=${BINFILE} of=/dev/${DISK} bs=1024 seek=8
 sync
+losetup -d /dev/${DISK}
