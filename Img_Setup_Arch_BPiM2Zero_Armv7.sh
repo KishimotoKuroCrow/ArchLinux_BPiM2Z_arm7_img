@@ -122,10 +122,6 @@ if [ -f $MOUNTROOT/etc/ssh/ssh_host_rsa_key ]; then
    cp $MOUNTROOT/etc/ssh/ssh_host_rsa_key ${MOUNTROOT}/${HOSTNAME}_key_4ssh
 fi
 
-# Unmount the partitions and disconnect the image to loop device
-umount $MOUNTBOOT
-umount $MOUNTROOT
-
 # Generate the BIN file, copy it, and burn it.
 BINFILE=u-boot-sunxi-with-spl.bin
 if [ ! -f ${BINFILE} ]; then
@@ -142,3 +138,7 @@ sync
 dd if=${BINFILE} of=/dev/${DISK} bs=1024 seek=8
 sync
 losetup -d /dev/${DISK}
+
+# Unmount the partitions and disconnect the image to loop device
+umount $MOUNTBOOT
+umount $MOUNTROOT
