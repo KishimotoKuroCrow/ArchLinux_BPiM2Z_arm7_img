@@ -35,6 +35,11 @@ sed -i 's/#Color/Color/g' /etc/pacman.conf
 pacman -Syyu --noconfirm
 sync
 
+# Skip kms hooks and regenerate the image.
+# mkinitcpio breaks after 36.1, but cryptsetup requires higher version
+sed -i 's/#default_options=""/default_options="--skiphooks kms"/g' /etc/mkinitcpio.d/linux-armv7.preset
+pacman -Sy mkinitcpio --noconfirm
+
 # Clear the pacman cache
 yes | pacman -Scc
 sync
@@ -44,6 +49,7 @@ echo $HOSTNAME > /etc/hostname
 
 # Set locale
 sed -i 's/#en_US/en_US/g' /etc/locale.gen
+sed -i 's/#C\.UTF/C.UTF/g' /etc/locale.gen
 locale-gen
 echo LANG=en_US.UTF-8 > /etc/locale.conf
 
