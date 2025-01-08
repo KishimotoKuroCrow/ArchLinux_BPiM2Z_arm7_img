@@ -84,7 +84,7 @@ BOOTFILEPATH=$MOUNTBOOT/boot
 TARGET_PARTUUID=$(blkid /dev/${DISK}p2 | awk '{print $5}' | sed 's/"//g')
 cat > ${BOOTFILEPATH}.cmd.bpim2z <<EOL
 part uuid \${devtype} \${devnum}:\${bootpart} uuid
-setenv bootargs console=tty1 console=serial0,115200 console=\${console} root=${TARGET_PARTUUID} rw rootwait audit=0
+setenv bootargs console=tty1 console=serial0,115200 console=\${console} root=${TARGET_PARTUUID} rw rootwait audit=0 brcmfmac.feature_disable=0x82000
 
 if load \${devtype} \${devnum}:\${bootpart} \${kernel_addr_r} zImage; then
   if load \${devtype} \${devnum}:\${bootpart} \${fdt_addr_r} dtbs/\${fdtfile}; then
